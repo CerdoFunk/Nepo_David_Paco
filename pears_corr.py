@@ -13,12 +13,12 @@ import matplotlib.pyplot as plt
 from scipy.stats import pearsonr as pr
 from sklearn.preprocessing import power_transform
 
-data1 = pd.read_csv('from2018-01-01to2022-09-09ofallYahooCryptoSymbols.csv') # Leemos el archivo generado por get_data.py
+data1 = pd.read_csv('from2018-01-01to2022-09-09ofallYahooVolumeCryptoSymbols.csv') # Leemos el archivo generado por get_data.py
 dataframe1 = data1.iloc[:,1:] # Consideramos sólo las columnas de cripto valores y excluimos la columna de tiempo
 dataframe1 = dataframe1.fillna(0.0) # Convertimos Nan's a ceros para que no falle el análisis de correlaciones
 print(dataframe1)
 
-### Copiar dataframe1 para generar una matriz normalizada por medio de box-cox o yeo-jhonson, 
+### Copiar dataframe1 para generar una matriz normalizada por medio de box-cox o yeo-johnson, 
 # dependiendo de si existen valores negativos en la data. Al final se genera un dataframe; norm_df
 data_tf = dataframe1.copy()
 columns = data_tf.columns
