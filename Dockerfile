@@ -6,8 +6,11 @@ RUN pip install \
     codecov \
     flake8 \
     mutmut \
+    pandas \
+    pandas-datareader
     pylint \
     pydantic \
     pytest \
     pytest-cov \
-    rope
+    rope \
+    yahooquery
