@@ -7,7 +7,7 @@ RUN pip install \
     flake8 \
     mutmut \
     pandas \
-    pandas-datareader
+    pandas-datareader \
     pylint \
     pydantic \
     pytest \
