@@ -7,7 +7,7 @@ from pandas_datareader import data as pdr
 from yahooquery import Screener
 
 #Fechas en formato (AAAA, M, D) usando paqueteria datetime.
-initial_t = datetime.datetime(2018, 1, 1)
+initial_t = datetime.datetime(2022, 9, 8)
 final_t = datetime.datetime(2022, 9, 9)
 
 def get_symbols():
@@ -17,7 +17,6 @@ def get_symbols():
     data = s.get_screeners('all_cryptocurrencies_us', count=250)
     dicts = data['all_cryptocurrencies_us']['quotes']
     symbols = [name['symbol'] for name in dicts]
-    print(symbols)
     return symbols
 
 def data_to_csv(start, end, symbol):

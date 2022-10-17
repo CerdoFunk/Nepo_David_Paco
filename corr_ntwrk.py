@@ -80,4 +80,4 @@ def create_corr_network_1(G, corr_direction):
     return plt.show()
 
 #create_corr_network_1(crear_red(pos_or_neg(cor_matrix, "positivo", 0)), "positivo")
-create_corr_network_1(crear_red(pos_or_neg(cor_matrix, "negativo", -0.1)), "negativo")
+create_corr_network_1(crear_red(pos_or_neg(cor_matrix, "negativo", -0.4)), "negativo")
