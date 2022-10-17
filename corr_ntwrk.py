@@ -30,11 +30,11 @@ def pos_or_neg(corr_mat, valor, cota):
 def crear_red(matrix):
     """Función para generar una red apartir de la matriz de
     correlación"""
-    #Extraer los índices de la matriz de correlación (nombres de los lípidos)
+    #Extraer los índices de la matriz de correlación (nombres de las criptos u otros valores)
     nodos = matrix.index.values
     #Cambiar de dataframe a matriz, para facilitarle a Networkx la tarea
     cor_matrix = np.asmatrix(matrix)
-    #Generamos el grafo usando los lípidos como nodos y su coeficiente de correlación como sus vertices (edges)
+    #Generamos el grafo usando las criptos como nodos y su coeficiente de correlación como sus vertices (edges)
     G = nx.from_numpy_matrix(cor_matrix)
     #Le ponemos nombre a los nodos, usando los valores de nodos en la primera línea
     G = nx.relabel_nodes(G,lambda x: nodos[x])
