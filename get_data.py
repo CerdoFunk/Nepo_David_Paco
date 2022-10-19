@@ -7,13 +7,8 @@ import datetime
 from pandas_datareader import data as pdr
 from yahooquery import Screener
 
-<<<<<<< HEAD
-#Fechas en formato (AAAA, M, D) usando paqueteria datetime.
-initial_t = datetime.datetime(2022, 9, 8)
-=======
 # Fechas en formato (AAAA, M, D) usando paqueteria datetime.
-initial_t = datetime.datetime(2018, 1, 1)
->>>>>>> 918744f05566426833e26190165691d87fd05f34
+initial_t = datetime.datetime(2022, 9, 8)
 final_t = datetime.datetime(2022, 9, 9)
 
 
@@ -21,16 +16,10 @@ def get_symbols():
     """Función para obtener todos los nombres de las criptos
     en yahoo finance usando la class Screener de yahooquery."""
     s = Screener()
-<<<<<<< HEAD
-    data = s.get_screeners('all_cryptocurrencies_us', count=250)
-    dicts = data['all_cryptocurrencies_us']['quotes']
-    symbols = [name['symbol'] for name in dicts]
-=======
     data = s.get_screeners("all_cryptocurrencies_us", count=250)
     dicts = data["all_cryptocurrencies_us"]["quotes"]
     symbols = [name["symbol"] for name in dicts]
     print(symbols)
->>>>>>> 918744f05566426833e26190165691d87fd05f34
     return symbols
 
 
@@ -59,5 +48,5 @@ def data_to_csv(start, end, symbol):
         "from" + time_i + "to" + time_f + "of" + "allYahooVolumeCryptoSymbols.csv"
     )
 
-
-data_to_csv(initial_t, final_t, get_symbols())
+print(get_symbols())
+#data_to_csv(initial_t, final_t, get_symbols())

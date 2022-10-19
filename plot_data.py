@@ -16,11 +16,14 @@ def line_plot(t_i, t_f, crypto):
     new_df = df.reset_index()
     df1 = df["Adj Close"]
     df1.plot()
-    return plt.show()
+    plt.show()
+    #return plt.show()
 
 def scatter_plot(t_i, t_f, cryptoA, cryptoB):
     """scatter plot es una función para hacer el gráfico de dispersión
     de dos criptomonedas.""" 
+    time_i = t_i.strftime('%Y-%m-%d')
+    time_f = t_f.strftime('%Y-%m-%d')
 
     df_A = pdr.DataReader(cryptoA, 'yahoo', start = t_i, end = t_f)
     df_B = pdr.DataReader(cryptoB, 'yahoo', start = t_i, end = t_f)
@@ -29,7 +32,8 @@ def scatter_plot(t_i, t_f, cryptoA, cryptoB):
     x1 = new_df_A["Adj Close"].values
     y1 = new_df_B["Adj Close"]
     plt.scatter(x1, y1)
-    return plt.show()
+    plt.show()
+    #return plt.show()
 
 
 t_i = dt(2022, 9, 1)
