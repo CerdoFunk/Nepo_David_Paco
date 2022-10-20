@@ -5,12 +5,16 @@ RUN pip install \
     black \
     codecov \
     flake8 \
+    matplotlib \
     mutmut \
     pandas \
-    pandas-datareader
+    pandas-datareader \
     pylint \
     pydantic \
     pytest \
     pytest-cov \
     rope \
+    typer \
     yahooquery
+
+ENTRYPOINT ["python", "/workdir/plot_data.py"]
