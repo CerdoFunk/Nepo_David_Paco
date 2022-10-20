@@ -5,6 +5,7 @@ RUN pip install \
     black \
     codecov \
     flake8 \
+    matplotlib \
     mutmut \
     pandas \
     pandas-datareader \
