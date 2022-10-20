@@ -3,6 +3,9 @@ import pandas as pd
 from datetime import datetime as dt
 import matplotlib.pyplot as plt
 from pandas_datareader import data as pdr
+import typer
+
+cripto = typer.Typer()
 
 
 def line_plot(t_i, t_f, crypto):
@@ -38,7 +41,19 @@ def scatter_plot(t_i, t_f, cryptoA, cryptoB):
     # return plt.show()
 
 
-t_i = dt(2022, 9, 1)
-t_f = dt(2022, 10, 9)
-line_plot(t_i, t_f, "BTC-USD")
-scatter_plot(t_i, t_f, "BTC-USD", "ETH-USD")
+@cripto.command()
+def time_serie(cripto="BTC-USD"):
+    t_i = dt(2022, 9, 1)
+    t_f = dt(2022, 10, 9)
+    line_plot(t_i, t_f, cripto)
+
+
+@cripto.command()
+def scatter(cripto_1="BTC-USD", cripto_2="ETH-USD"):
+    t_i = dt(2022, 9, 1)
+    t_f = dt(2022, 10, 9)
+    scatter_plot(t_i, t_f, cripto_1, cripto_2)
+
+
+if __name__ == "__main__":
+    cripto()
