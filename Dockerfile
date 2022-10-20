@@ -14,4 +14,5 @@ RUN pip install \
     pytest \
     pytest-cov \
     rope \
+    typer \
     yahooquery
