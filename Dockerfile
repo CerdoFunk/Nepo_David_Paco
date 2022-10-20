@@ -16,3 +16,5 @@ RUN pip install \
     rope \
     typer \
     yahooquery
+
+ENTRYPOINT ["python", "/workdir/plot_data.py"]
