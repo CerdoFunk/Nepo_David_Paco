@@ -8,7 +8,7 @@ from pandas_datareader import data as pdr
 from yahooquery import Screener
 
 # Fechas en formato (AAAA, M, D) usando paqueteria datetime.
-initial_t = datetime.datetime(2018, 1, 1)
+initial_t = datetime.datetime(2022, 9, 8)
 final_t = datetime.datetime(2022, 9, 9)
 
 
@@ -48,5 +48,5 @@ def data_to_csv(start, end, symbol):
         "from" + time_i + "to" + time_f + "of" + "allYahooVolumeCryptoSymbols.csv"
     )
 
-
-data_to_csv(initial_t, final_t, get_symbols())
+print(get_symbols())
+#data_to_csv(initial_t, final_t, get_symbols())
