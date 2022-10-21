@@ -7,15 +7,23 @@ import typer
 
 cripto = typer.Typer()
 
-
-def line_plot(t_i, t_f, crypto):
-    """line_plot es una función que grafica el valor Adj Close de una
-    cripto respecto al tiempo."""
+def plot_specifics(t_i, t_f):
+    """Función que devuelve tiempo incial, final, figure y axes
+    usados para generar las gráficas en las funciones line_plot 
+    y scatter_plot."""
 
     # Para hacer leible la fecha y usarlo para personalizar la gráfica.
     time_i = t_i.strftime("%Y-%m-%d")
     time_f = t_f.strftime("%Y-%m-%d")
     fig, ax = plt.subplots()
+
+    return time_i, time_f, fig, ax
+
+def line_plot(t_i, t_f, crypto):
+    """line_plot es una función que grafica el valor Adj Close de una
+    cripto respecto al tiempo."""
+
+    time_i, time_f, fig, ax = plot_specifics(t_i, t_f)
     df = pdr.DataReader(crypto, "yahoo", start=t_i, end=t_f)
     new_df = df.reset_index()
     df1 = df["Adj Close"]
@@ -27,9 +35,8 @@ def line_plot(t_i, t_f, crypto):
 def scatter_plot(t_i, t_f, cryptoA, cryptoB):
     """scatter plot es una función para hacer el gráfico de dispersión
     de dos criptomonedas."""
-    time_i = t_i.strftime("%Y-%m-%d")
-    time_f = t_f.strftime("%Y-%m-%d")
-    fig, ax = plt.subplots()
+    
+    time_i, time_f, fig, ax = plot_specifics(t_i, t_f)
     df_A = pdr.DataReader(cryptoA, "yahoo", start=t_i, end=t_f)
     df_B = pdr.DataReader(cryptoB, "yahoo", start=t_i, end=t_f)
     new_df_A = df_A.reset_index()
