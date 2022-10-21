@@ -15,13 +15,13 @@ def line_plot(t_i, t_f, crypto):
     # Para hacer leible la fecha y usarlo para personalizar la gráfica.
     time_i = t_i.strftime("%Y-%m-%d")
     time_f = t_f.strftime("%Y-%m-%d")
-
+    fig, ax = plt.subplots()
     df = pdr.DataReader(crypto, "yahoo", start=t_i, end=t_f)
     new_df = df.reset_index()
     df1 = df["Adj Close"]
     df1.plot()
+    fig.savefig("line_plot_from_"+time_i+"_to_"+time_f+"_of_"+crypto+".eps", format = "eps")
     plt.show()
-    # return plt.show()
 
 
 def scatter_plot(t_i, t_f, cryptoA, cryptoB):
@@ -29,7 +29,7 @@ def scatter_plot(t_i, t_f, cryptoA, cryptoB):
     de dos criptomonedas."""
     time_i = t_i.strftime("%Y-%m-%d")
     time_f = t_f.strftime("%Y-%m-%d")
-
+    fig, ax = plt.subplots()
     df_A = pdr.DataReader(cryptoA, "yahoo", start=t_i, end=t_f)
     df_B = pdr.DataReader(cryptoB, "yahoo", start=t_i, end=t_f)
     new_df_A = df_A.reset_index()
@@ -37,8 +37,8 @@ def scatter_plot(t_i, t_f, cryptoA, cryptoB):
     x1 = new_df_A["Adj Close"].values
     y1 = new_df_B["Adj Close"]
     plt.scatter(x1, y1)
+    fig.savefig("scatter_plot_from_"+time_i+"_to_"+time_f+"_of_"+cryptoA+"_and_"+cryptoB+".eps", format = "eps")
     plt.show()
-    # return plt.show()
 
 
 @cripto.command()
@@ -57,3 +57,4 @@ def scatter(cripto_1="BTC-USD", cripto_2="ETH-USD"):
 
 if __name__ == "__main__":
     cripto()
+
