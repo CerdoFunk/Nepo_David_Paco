@@ -23,15 +23,18 @@ def get_symbols():
     return symbols
 
 
-def data_to_csv(start, end, symbol):
+def data_to_csv(start, end, symbol, valor):
     """Función para probar la descarga de datos de yahoo finance
     (pero se pueden usar otras fuentes de internet. Listadas en:
     https://pandas-datareader.readthedocs.io/en/latest/remote_data.html)
     Dicha función necesita una fecha inicial y final (start y end)
     y una lista (symbol) con los nombres que se quieren descargar
-    en dicho intervalo de tiempo. Al final la función devuelve
-    los precios de Adj Close para cada cripto seleccionada y lo escribe
-    en un archivo.csv"""
+    en dicho intervalo de tiempo. Al final la función puede devolver
+    los precios de Adj Close, Volume, Close u Open, dependiendo de cómo
+    se defina el argumento valor en esta función (debe ser type(str)). 
+    Todo estopara cada cripto seleccionada por get_symbols() 
+    o por una lista con nombres. 
+    Al final todo se escribe en un archivo.csv"""
 
     # Para hacer leible la fecha y usarla en el nombre del archivo.csv de salida.
     time_i = start.strftime("%Y-%m-%d")
@@ -39,14 +42,14 @@ def data_to_csv(start, end, symbol):
     df = pdr.DataReader(symbol, "yahoo", start=start, end=end)
     print(df.head())
     print("-----------------------------")
-    print(df["Adj Close"])
+    print(df[valor])
 
     # La función devuelve todas los precios de Adj Close para cada cripto en un archivo.csv.
     # Adj Close es sólo uno de los atributos de la data descargada. Modificando el return por
     # Volume, Close, Open generara un archivo.csv pero considerando esos atributos.
-    return df["Adj Close"].to_csv(
-        "from" + time_i + "to" + time_f + "of" + "allYahooVolumeCryptoSymbols.csv"
+    return df[valor].to_csv(
+        "from" + time_i + "to" + time_f + "of" + valor + "allYahooCryptoSymbols"+".csv"
     )
 
 print(get_symbols())
-#data_to_csv(initial_t, final_t, get_symbols())
+data_to_csv(initial_t, final_t, get_symbols(), "Volume")
